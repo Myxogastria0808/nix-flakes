@@ -1,3 +1,6 @@
 [submodule "rust"]
 	path = rust
 	url = https://github.com/Myxogastria0808/nix-flakes-rust.git
+[submodule "nodejs"]
+	path = nodejs
+	url = https://github.com/Myxogastria0808/nix-flakes-nodejs.git
