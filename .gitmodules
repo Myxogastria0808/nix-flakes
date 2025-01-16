@@ -4,3 +4,6 @@
 [submodule "nodejs"]
 	path = nodejs
 	url = https://github.com/Myxogastria0808/nix-flakes-nodejs.git
+[submodule "r"]
+	path = r
+	url = https://github.com/Myxogastria0808/nix-flakes-r.git
