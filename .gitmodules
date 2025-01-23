@@ -7,3 +7,6 @@
 [submodule "r"]
 	path = r
 	url = https://github.com/Myxogastria0808/nix-flakes-r.git
+[submodule "java"]
+	path = java
+	url = https://github.com/Myxogastria0808/nix-flakes-java.git
