@@ -10,3 +10,6 @@
 [submodule "java"]
 	path = java
 	url = https://github.com/Myxogastria0808/nix-flakes-java.git
+[submodule "presenterm"]
+	path = presenterm
+	url = https://github.com/Myxogastria0808/nix-flakes-presenterm.git
