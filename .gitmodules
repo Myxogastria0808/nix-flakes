@@ -16,3 +16,6 @@
 [submodule "fltk"]
 	path = fltk
 	url = https://github.com/Myxogastria0808/nix-flakes-fltk.git
+[submodule "duckdb"]
+	path = duckdb
+	url = https://github.com/Myxogastria0808/nix-flakes-duckdb.git
