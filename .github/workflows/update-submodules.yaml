@@ -30,10 +30,12 @@ jobs:
     # STEP 2: サブモジュールの更新とコミット
     - name: Update, Commit, and Push Submodules
       run: |
-        # 【最重要】Gitの自動改行コード変換を無効化します
-        # これにより、サブモジュール内のファイルが意図せず変更 (modified content) されるのを防ぎます
-        echo "🔧 Disabling git's automatic line ending conversion..."
+        # Gitの環境設定を調整して、予期せぬファイル変更を防ぎます
+        echo "🔧 Configuring git to prevent unexpected file modifications..."
+        # 1. 自動改行コード変換を無効化 (CRLF/LF問題の防止)
         git config --global core.autocrlf false
+        # 2. 【最重要】ファイルの実行権限の変更を無視 (パーミッション問題の解決)
+        git config --global core.filemode false
 
         # サブモジュールをリモートの最新に更新します
         echo "🔄 Updating submodules..."
@@ -52,10 +54,11 @@ jobs:
         git config --local user.name "github-actions[bot]"
 
         # 変更をステージングします
+        echo "📝 Staging changes..."
         git add -A
 
         # ステージング後の状態を確認します
-        echo "📝 Git status after 'git add -A':"
+        echo "📊 Git status after staging:"
         git status
 
         # 変更をコミットします
