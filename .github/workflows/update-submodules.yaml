@@ -22,10 +22,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        submodules: recursive
+        fetch-depth: 0
     - name: Update submodules
       run: |
-        git submodule update --remote --recursive
+        git submodule update --init --recursive
+        git submodule update --remote
     - name: Check diff
       id: status
       run: echo "STATUS=$(git status -s)" >> $GITHUB_OUTPUT
