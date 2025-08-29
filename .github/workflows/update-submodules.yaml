@@ -26,19 +26,16 @@ jobs:
     - name: Update submodules
       run: |
         git submodule update --init --remote --recursive
-    - name: Check diff
-      id: status
-      run: echo "STATUS=$(git status -s)" >> $GITHUB_OUTPUT
-    - name: ECHO
-      run: echo "${{ steps.status.outputs.STATUS }}"
+    - name: Check git status
+      run: echo "$(git status -s)"
     - name: Commit changes
-      if: ${{ steps.status.outputs.STATUS != '' }}
+      if: ${{ '$(git status -s)' != '' }}
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -am "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
     - name: Push changes
-      if: ${{ steps.status.outputs.STATUS != '' }}
+      if: ${{ '$(git status -s)' != '' }}
       # Reference: https://github.com/ad-m/github-push-action
       uses: ad-m/github-push-action@master
       with:
