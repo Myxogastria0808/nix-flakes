@@ -31,6 +31,7 @@ jobs:
     - name: Commit changes
       if: ${{ '$(git status -s)' != '' }}
       run: |
+        git add .
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -am "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
