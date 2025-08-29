@@ -30,14 +30,14 @@ jobs:
     - name: ECHO
       run: echo "${{ steps.status.outputs.STATUS }}"
     - name: Commit changes
-      if: ${{ steps.status.outputs.STATUS == '' }}
+      if: ${{ steps.status.outputs.STATUS != '' }}
       run: |
         git add .
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -m "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
     - name: Push changes
-      if: ${{ steps.status.outputs.STATUS == '' }}
+      if: ${{ steps.status.outputs.STATUS != '' }}
       # Reference: https://github.com/ad-m/github-push-action
       uses: ad-m/github-push-action@master
       with:
