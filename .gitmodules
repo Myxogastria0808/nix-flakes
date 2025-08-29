@@ -28,3 +28,6 @@
 [submodule "nix-flakes-ocaml"]
 	path = nix-flakes-ocaml
 	url = https://github.com/Myxogastria0808/nix-flakes-ocaml.git
+[submodule "nix-flakes-bevy"]
+	path = nix-flakes-bevy
+	url = https://github.com/Myxogastria0808/nix-flakes-bevy.git
