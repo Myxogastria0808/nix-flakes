@@ -22,3 +22,6 @@
 [submodule "shiny"]
 	path = shiny
 	url = https://github.com/Myxogastria0808/nix-flakes-shiny.git
+[submodule "nix-flakes-haskell"]
+	path = nix-flakes-haskell
+	url = https://github.com/Myxogastria0808/nix-flakes-haskell.git
