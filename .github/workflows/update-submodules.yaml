@@ -26,7 +26,7 @@ jobs:
     - name: Update submodules
       run: |
         git submodule update --init --remote --recursive
-    - name: Check git status
+    - name: Show git status
       run: echo "$(git status -s)"
     - name: Commit changes
       if: ${{ '$(git status -s)' != '' }}
