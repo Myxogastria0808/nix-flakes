@@ -30,7 +30,13 @@ jobs:
     # STEP 2: サブモジュールの更新とコミット
     - name: Update, Commit, and Push Submodules
       run: |
+        # 【重要】サブモジュール内の状態をリセットしてクリーンにします
+        echo "🧹 Resetting and cleaning submodules..."
+        git submodule foreach 'git reset --hard'
+        git submodule foreach 'git clean -fdx'
+
         # サブモジュールをリモートの最新に更新します
+        echo "🔄 Updating submodules..."
         git submodule update --init --remote --recursive
 
         # 変更がない場合はここでスクリプトを終了します
@@ -45,11 +51,11 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
 
-        # 変更をステージングします
-        git add .
+        # 変更をステージングします (-A オプションですべての変更を対象にします)
+        git add -A
 
         # 【デバッグ用】git add の後、ステージングの状態を確認します
-        echo "📝 Git status after 'git add .':"
+        echo "📝 Git status after 'git add -A':"
         git status
 
         # 変更をコミットします
@@ -57,4 +63,3 @@ jobs:
 
         # リモートリポジトリにプッシュします
         git push
-
