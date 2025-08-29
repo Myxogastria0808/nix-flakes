@@ -20,9 +20,9 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v5
       with:
-        fetch-depth: 0
+        submodules: 'recursive'
     - name: Update submodules
       run: |
         git submodule update --init --remote --recursive
@@ -31,8 +31,8 @@ jobs:
     - name: Commit changes
       if: ${{ '$(git status -s)' != '' }}
       run: |
-        git add .
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git commit -am "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
+        git add .
+        git commit -m "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
         git push
