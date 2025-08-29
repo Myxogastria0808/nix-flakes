@@ -26,15 +26,16 @@ jobs:
         git submodule update --remote --recursive
     - name: Check diff
       id: status
-      run: echo "::set-output name=status::$(git status -s)"
+      run: echo "DIFF=$(git status -s)" >> $GITHUB_OUTPUT
     - name: Commit changes
+      if: ${{ steps.status.outputs.DIFF }}
       run: |
         git add .
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git commit -m "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
-      if: ${{ steps.status.outputs.status }}
     - name: Push changes
+      if: ${{ steps.status.outputs.DIFF }}
       # Reference: https://github.com/ad-m/github-push-action
       uses: ad-m/github-push-action@master
       with:
