@@ -6,6 +6,7 @@ name: Update Submodules
 
 on:
   schedule:
+    # 日本時間 午前9時に実行
     - cron: '0 0 * * *'
   push:
     branches: ['main']
@@ -19,24 +20,41 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v5
+    # STEP 1: リポジトリのチェックアウト
+    - name: Checkout repository
+      uses: actions/checkout@v4
       with:
         submodules: 'recursive'
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Update submodules
+
+    # STEP 2: サブモジュールの更新とコミット
+    - name: Update, Commit, and Push Submodules
       run: |
+        # サブモジュールをリモートの最新に更新します
         git submodule update --init --remote --recursive
-    - name: Show git status
-      run: echo "$(git status --porcelain)"
-    - name: Commit changes
-      run: |
+
+        # 変更がない場合はここでスクリプトを終了します
         if [ -z "$(git status --porcelain)" ]; then
-          echo "No changes to commit."
+          echo "✅ No submodule changes to commit."
           exit 0
         fi
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+        echo "🔍 Submodule changes detected. Preparing to commit..."
+
+        # Gitのユーザー情報を設定します
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
+
+        # 変更をステージングします
         git add .
-        git commit -m "Update submodules at $(date "+DATE: %Y-%m-%d TIME: %H:%M:%S")"
+
+        # 【デバッグ用】git add の後、ステージングの状態を確認します
+        echo "📝 Git status after 'git add .':"
+        git status
+
+        # 変更をコミットします
+        git commit -m "chore: Update submodules"
+
+        # リモートリポジトリにプッシュします
         git push
+
