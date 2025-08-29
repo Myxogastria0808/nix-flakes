@@ -31,3 +31,12 @@
 [submodule "nix-flakes-bevy"]
 	path = nix-flakes-bevy
 	url = https://github.com/Myxogastria0808/nix-flakes-bevy.git
+[submodule "bevy"]
+	path = bevy
+	url = https://github.com/Myxogastria0808/nix-flakes-bevy.git
+[submodule "haskell"]
+	path = haskell
+	url = https://github.com/Myxogastria0808/nix-flakes-haskell.git
+[submodule "ocaml"]
+	path = ocaml
+	url = https://github.com/Myxogastria0808/nix-flakes-ocaml.git
