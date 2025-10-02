@@ -37,3 +37,6 @@
 [submodule "ocaml"]
 	path = ocaml
 	url = https://github.com/Myxogastria0808/nix-flakes-ocaml.git
+[submodule "julia"]
+	path = julia
+	url = https://github.com/Myxogastria0808/nix-flakes-julia.git
