@@ -40,3 +40,6 @@
 [submodule "julia"]
 	path = julia
 	url = https://github.com/Myxogastria0808/nix-flakes-julia.git
+[submodule "python"]
+	path = python
+	url = https://github.com/Myxogastria0808/nix-flakes-python.git
