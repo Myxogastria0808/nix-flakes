@@ -43,3 +43,6 @@
 [submodule "python"]
 	path = python
 	url = https://github.com/Myxogastria0808/nix-flakes-python.git
+[submodule "c"]
+	path = c
+	url = https://github.com/Myxogastria0808/nix-flakes-c.git
