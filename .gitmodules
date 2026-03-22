@@ -46,3 +46,6 @@
 [submodule "c"]
 	path = c
 	url = https://github.com/Myxogastria0808/nix-flakes-c.git
+[submodule "elm"]
+	path = elm
+	url = https://github.com/Myxogastria0808/nix-flakes-elm.git
